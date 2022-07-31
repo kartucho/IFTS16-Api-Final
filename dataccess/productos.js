@@ -4,7 +4,8 @@ let Productos = [{
     "marca": "ASUS",
     "modelo": "GTX 1660 Super",
     "precio": 130000,
-    "segmento": "Diseño"
+    "segmento": "Diseño",
+    "destacados": true
 },
 {
     "id": "2",
@@ -12,7 +13,8 @@ let Productos = [{
     "marca": "GIGABYTE",
     "modelo": "RTX 3060 Super",
     "precio": 250000,
-    "segmento": "Gaming"
+    "segmento": "Gaming",
+    "destacados": false
 },
 {
     "id": "3",
@@ -20,7 +22,8 @@ let Productos = [{
     "marca": "GIGABYTE",
     "modelo": "RTX 3090 TI",
     "precio": 590000,
-    "segmento": "Gaming"
+    "segmento": "Gaming",
+    "destacados": false
 },
 {
     "id": "4",
@@ -28,7 +31,8 @@ let Productos = [{
     "marca": "INTEL",
     "modelo": "I5-12400",
     "precio": 45000,
-    "segmento": "Diseño"
+    "segmento": "Diseño",
+    "destacados": false
 },
 {
     "id": "5",
@@ -36,7 +40,8 @@ let Productos = [{
     "marca": "INTEL",
     "modelo": "I7-12700",
     "precio": 79000,
-    "segmento": ["Gaming", "Diseño"]
+    "segmento": ["Gaming", "Diseño"],
+    "destacados": false
 },
 {
     "id": "6",
@@ -44,7 +49,8 @@ let Productos = [{
     "marca": "AMD",
     "modelo": "RYZEN 7 5700G",
     "precio": 57000,
-    "segmento": "Diseño"
+    "segmento": "Diseño",
+    "destacados": false
 },
 {
     "id": "7",
@@ -52,7 +58,8 @@ let Productos = [{
     "marca": "AMD",
     "modelo": "RYZEN 9 5900X",
     "precio": 97000,
-    "segmento": "Gaming"
+    "segmento": "Gaming",
+    "destacados": false
 },
 {
     "id": "8",
@@ -60,7 +67,8 @@ let Productos = [{
     "marca": "Kingston",
     "modelo": "DDR4 8Gb 2666Mhz Value",
     "precio": 9800,
-    "segmento": "Diseño"
+    "segmento": "Diseño",
+    "destacados": false
 },
 {
     "id": "9",
@@ -68,7 +76,8 @@ let Productos = [{
     "marca": "Kingston",
     "modelo": "DDR4 16Gb 2666Mhz Fury",
     "precio": 17500,
-    "segmento": "Gaming"
+    "segmento": "Gaming",
+    "destacados": false
 },
 {
     "id": "10",
@@ -76,7 +85,8 @@ let Productos = [{
     "marca": "Kingston",
     "modelo": "DDR4 32Gb 3200Mhz Fury Beast RGB",
     "precio": 32900,
-    "segmento": "Gaming"
+    "segmento": "Gaming",
+    "destacados": true
 }
 ];
 
@@ -98,11 +108,11 @@ if (query.search) {
 return resultado
 };
 
-const getAllAlphabetically = () => { return Productos.sort((a, b) => a.title.localeCompare(b.title)) };
-
 const getMarca = (marca) => { return Productos.filter(productos => productos.marca == marca) };
 
 const getTipo = (tipo) => { return Productos.filter(productos => productos.tipo == tipo) };
+
+const getDestacados = () => {return Productos.filter(productos => productos.destacados )};
 
 const getOne = (id) => { return Productos.find((registro) => registro.id == id); }
 
@@ -126,4 +136,4 @@ if (index >= 0) {
 return false
 }
 
-module.exports = { getAll, getAllAlphabetically, getOne, save, borrar, update, getMarca, getTipo };
+module.exports = { getAll, getDestacados, getOne, save, borrar, update, getMarca, getTipo };

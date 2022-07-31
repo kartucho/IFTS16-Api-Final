@@ -15,6 +15,9 @@ GET http://localhost:8000/productos/tipo?tipo=Microprocesador
 ### 
 GET http://localhost:8000/productos/marca?marca=ASUS
 
+### 
+GET http://localhost:8000/productos/destacados
+
 ###
 POST http://localhost:8000/productos
 Content-Type: application/json
