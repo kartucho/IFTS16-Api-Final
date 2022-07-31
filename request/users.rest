@@ -1,18 +1,18 @@
 ###
-GET http: //localhost:8000/users
+GET http://localhost:8000/users
 
 ###
-DELETE http: //localhost:8000/users/2
+DELETE http://localhost:8000/users/2
 
 ###
-POST http: //localhost:8000/users Content-Type: application/json
+POST http://localhost:8000/users Content-Type: application/json
 
 { "id": "5", "name": "Gonzalo", "lastname": "Garcia", "user": "Barba Nuevo", "email": "barbanuevo@gmail.com" }
 
 ###
-PUT http: //localhost:8000/users/3 Content-Type: application/json
+PUT http://localhost:8000/users/3 Content-Type: application/json
 
 { "id": "3", "name": "Mini", "lastname": "Justo", "user": "MJ", "email": "mj@gmail.com" }
 
 ###
-GET http: //localhost:8000/users
+GET http://localhost:8000/users
