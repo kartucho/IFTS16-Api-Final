@@ -1,0 +1,30 @@
+###
+GET http://localhost:8000/comment
+
+###
+DELETE http://localhost:8000/comment/3
+
+###
+POST http://localhost:8000/comment
+Content-Type: application/json
+
+{
+"id": "11","comment": "Comentario Agregado xD", "rating": 100, "idProdu": "100"
+}
+
+###
+PUT http://localhost:8000/comment/2 
+Content-Type: application/json
+
+{
+"id": "2","comment": "Comentario Modificado xD", "rating": 100, "idProdu": "100"
+}
+
+###
+GET http://localhost:8000/comment?idProdu=5
+
+###
+GET http://localhost:8000/comment?rating=7
+
+###
+GET http://localhost:8000/comment
