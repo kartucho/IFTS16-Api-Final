@@ -9,11 +9,6 @@ router.get("/", (req, res) => {
     res.status(200).json(dao.getAll(req.query));
 });
 
-/*Obtener todo alfabeticamente*/
-router.get("/az", (req, res) => {
-    res.status(200).json(dao.getAllAlphabetically());
-});
-
 //Obtener por tipo
 router.get("/tipo", (req, res) => {
     res.status(200).json(dao.getTipo(req.query.tipo));
