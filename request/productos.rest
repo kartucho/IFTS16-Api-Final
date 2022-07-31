@@ -1,0 +1,36 @@
+GET http://localhost:8000/productos
+
+###
+DELETE http://localhost:8000/productos/2
+
+###
+GET http://localhost:8000/productos/2
+
+###
+GET http://localhost:8000/productos?segmento=Gaming
+
+### 
+GET http://localhost:8000/productos/tipo?tipo=Microprocesador
+
+### 
+GET http://localhost:8000/productos/marca?marca=ASUS
+
+###
+POST http://localhost:8000/productos
+Content-Type: application/json
+
+{
+"id": "11","tipo": "Producto Agregado xD", "marca": "Alguna", "modelo": "El mejor", "precio": 1000000, "segmento": "Gaming"
+}
+
+###
+PUT http://localhost:8000/productos/10
+Content-Type: application/json
+
+{
+"id": "10","tipo": "Producto Modificado xD", "marca": "Kingston", "modelo": "El mejor", "precio": 1000000, "segmento": "Gaming"
+}
+
+###
+GET http://localhost:8000/productos
+
