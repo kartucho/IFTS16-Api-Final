@@ -1,70 +1,45 @@
-let Users = [{
-    "id": "1",
-    "name": "Alan",
-    "lastname": "Gimelstein",
-    "user": "Alanardo",
-    "email": "alan@gmail.com"
-},
-{
-    "id": "2",
-    "name": "Gonzalo",
-    "lastname": "Garcia",
-    "user": "barba",
-    "email": "gonzalo@gmail.com"
-},
-{
-    "id": "3",
-    "name": "Matias",
-    "lastname": "Giusti",
-    "user": "Justo",
-    "email": "mati@gmail.com"
-},
-{
-    "id": "4",
-    "name": "Agustin",
-    "lastname": "Basualdo",
-    "user": "agusB",
-    "email": "agustin@gmail.com"
-},
-];
+const { v4: uuidv4 } = require("uuid");
+const middleware = require('../utils/middleware');
 
-const getAll = (query) => {
-let resultado = Users;
+const router = require("express").Router();
+let dao = require("../dataccess/users");
 
-if (query.user) {
-    resultado = resultado.filter(e => e.user === query.user)
-}
-
-if (query.email) {
-    resultado = resultado.filter(e => e.email === query.email)
-}
-
-if (query.search) {
-    resultado = resultado.filter(e => e.user.includes(resultado.search) || e.name.includes(resultado.search) || e.lastname.includes(resultado.search) || e.email.includes(resultado.search))
-}
-
-return resultado
-};
+/* Obtener todo los comentarios */
+router.get("/", (req, res) => {
+    res.status(200).json(dao.getAll(req.query));
+});
 
 
-const save = (body) => { Users.push(body); }
+/* Agregar un elemento */
 
-const borrar = (id) => {
-const index = Users.findIndex((registro) => registro.id == id);
-if (index > 0) {
-    Users.splice(index, 1);
-    return true
-}
-return false
-}
+router.post("/", (req, res) => {
 
-const update = (id, req) => {
-const index = Users.findIndex((registro) => registro.id == id);
-if (index >= 0) {
-    Users[index] = req;
-    return true
-}
-return false
-}
+    const body = { id: uuidv4(), ...req.body };
+    dao.save(body);
+    res.status(200).json(body);
+});
 
-module.exports = { getAll, save, borrar, update };
+/* Borrar un elemento */
+
+router.delete("/:id", (req, res) => {
+    const id = req.params.id;
+
+    if (dao.borrar(id)) {
+        res.sendStatus(202);
+    } else {
+        res.sendStatus(404);
+    }
+});
+
+/* Modificar un elemento */
+router.put("/:id", (req, res) => {
+    const id = req.params.id;
+
+    if (dao.update(id, req.body)) {
+        res.sendStatus(202);
+    } else {
+        res.sendStatus(404);
+    }
+});
+
+module.exports = router;
