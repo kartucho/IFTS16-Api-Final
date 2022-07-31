@@ -1,4 +1,5 @@
 #@name login 
-POST http://localhost:8000/login Content-Type: application/json Authorization: Bearer {{ login.response.body.token }}
+POST http://localhost:8000/login 
+Content-Type: application/json Authorization: Bearer {{ login.response.body.token }}
 
 { "username":"master", "password":"ifts16" }
