@@ -4,6 +4,7 @@ require('dotenv').config()
 
 router.post('/', (req, res) => {
     const { body } = req
+    console.log(body)
     if (body.username == 'master' && body.password == 'ifts16') {
         //usuario correcto
         const tokenData = {
